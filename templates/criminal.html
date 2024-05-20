@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{selected_pet.name}}</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='criminal.css') }}">
+
+</head>
+<body>
+
+<header>
+  <h1>{{selected_pet.name}}</h1>
+</header>
+
+<div class="container">
+  <div>
+    <!-- Button to go back -->
+    <button class="w3-button w3-light-grey w3-padding-large w3-section" onclick="history.back()">
+      <i class="fas fa-arrow-left"></i> חזור
+    </button>
+
+    <div class="card">
+      <p>{{selected_pet.fits_for}}</p>
+    </div>
+    <div class="card">
+      <p>גזע: {{selected_pet.race}}</p>
+      <p>קטוריה משנית: {{selected_pet.age}}</p>
+      <p>מתאים ל: {{selected_pet.fits_for}}</p>
+    </div>
+
+    <div class="card">
+      <h2>מעוניין לאמץ? פנה אלינו</h2>
+      <form action="/send_email" method="post">
+        <input type="text" placeholder="שם" required name="Name" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        <input type="email" placeholder="אימייל" required name="Email" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        <textarea placeholder="הודעה" required name="Message" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px;"></textarea>
+        <input type="hidden" name="CriminalID" value="{{ selected_pet.id }}">
+        <input type="hidden" name="CriminalName" value="{{ selected_pet.name }}">
+        <button class="button" type="submit">
+          <i class="fas fa-paper-plane"></i> שלח הודעה
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <div class="card">
+      <h2>תמונות</h2>
+      <div class="gallery">
+        <img src="{{ url_for('static', filename='images/' ~ selected_pet.img_path1) }}" alt="תמונה נוספת 1">
+        <img src="{{ url_for('static', filename='images/' ~ selected_pet.img_path2) }}" alt="תמונה נוספת 2">
+        <img src="{{ url_for('static', filename='images/' ~ selected_pet.img_path3) }}" alt="תמונה נוספת 3">
+        <!-- Add more images as needed -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* gallery.css */
+
+@import url(https://dl.dropboxusercontent.com/u/15746367/fonts/carmela/style.css);
+@import url(https://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
+
+body, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  direction: rtl; /* Right-to-left writing */
+}
+
+body {
+  background-color: #1c3943;
+  color: #2e5c64;
+}
+
+h1 {
+  font-family: "Alef Hebrew", sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;  
+  font-size: 40px;
+}
+
+/* Header styling */
+header {
+  background-color: #477479;
+  color: #fff; /* White text color */
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Button styling */
+.button {
+  background-color: #007bff; /* Blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Filter input styling */
+.filter-input {
+  width: calc(33% - 20px); /* Adjusted width */
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px; /* Margin added */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Card styling */
+.card {
+  background-color: #fff; /* White card background */
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px; /* Adjusted bottom margin */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
+}
+
+.card:hover {
+  transform: translateY(-18px); /* Lift card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.image-header {
+  margin-top: 10px;
+  font-size: 25px;
+  color: #2e5c64; /* Dark text color */
+  font-weight: bold; /* Make the criminal name bold */
+}
+
+.sub-category {
+  margin-top: 0px;
+  font-size: 15px; /* Reduce the font size for the sub-category */
+  color: #777; /* Lighter text color for the sub-category */
+}
+
+.card-link {
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Inherit text color */
+}
+
+/* Add margin below the row of cards */
+.w3-row-padding {
+  margin-bottom: 20px;
+}

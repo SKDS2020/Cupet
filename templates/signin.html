@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='signin.css') }}">
+
+</head>
+
+<body>
+    <header class="header">
+        <h1>שידוכים בין אנשים לבע״ח - Cupet</h1>
+    </header>
+
+    <main class="main">
+        <div class="left-section">
+            <div class="header-image">
+                <img src="{{ url_for('static', filename='images/sign_in.png') }}" alt="Header Image">
+            </div>
+        </div>
+        <div class="right-section">
+            <section class="login-card">
+                <h2>התחברות</h2>
+                <form action="/signin" method="post">
+                    <label for="username">שם משתמש:</label><br>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="password">סיסמה:</label><br>
+                    <input type="password" id="password" name="password" required><br>
+                    <button type="submit">התחברות</button>
+                </form>
+                <div class="signup-link">
+                    <p>אין לך חשבון? <a href="/signup">הרשם כאן</a></p>
+                </div>
+            </section>
+            <section class="about-us">
+                <h2>אודות הפרוייקט</h2>
+                <p>
+                    מאגר זה נועד למצוא שידוכים בין אנשים לבעלי חיים שמחפשים בית
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Cupet</p>
+    </footer>
+</body>
+
+</html>

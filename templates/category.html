@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<title>מאגר חיות מחמד</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='gallery.css') }}">
+</head>
+<body>
+
+<header>
+  <img src="https://styles.redditmedia.com/t5_2rw7o/styles/communityIcon_zv0gx34lt5f11.png" alt="Top Image" style="width:3%; height:auto;">
+  <h1>Choose Your WeaPet</h1>
+</header>
+
+<!--<header>-->
+<!--  <h1>Choose Your WeaPet</h1>-->
+<!--</header>-->
+
+<button class="w3-button w3-light-grey w3-padding-large w3-section" onclick="window.location.href='{{ url_for('signin') }}'">
+  <i class="fa fa-home"></i> חזרה
+</button>
+
+<div class="w3-content w3-container">
+  <!-- Filter input fields -->
+  <div style="display:flex; justify-content:flex-end;"> <!-- Aligning filters to the right -->
+    <input type="text" class="filter-input" id="nameFilterInput" placeholder="סנן לפי שם...">
+    <input type="text" class="filter-input" id="categoryFilterInput" placeholder="סנן לפי קטגוריה או תת קטגוריה...">
+    <input type="text" class="filter-input" id="convictionYearFilterInput" placeholder="סנן לפי שנת הרשעה...">
+  </div>
+
+  <!-- Container for criminal cards -->
+  <div class="w3-row-padding" id="portfolio">
+    {% for pet in pets %}
+      {% if pet.name is not none %}
+        <div class="w3-col l3 m6">
+          <a href="{{ url_for('pet', pet_id=pet.id) }}" class="card-link">
+            <div class="card" data-category="{{ pet.race }}" data-subcategory="{{ pet.age }}">
+              <img src="{{ url_for('static', filename='images/' ~ pet.img_path1) }}" alt="{{ pet.name }}">
+              <div class="card-content">
+                <p class="image-header">{{ pet.name }}</p>
+                <p class="sub-category">{{ pet.age }}</p> <!-- Display sub-category -->
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- JavaScript for filtering -->
+<script>
+function filterCriminals() {
+  var nameFilterValue = document.getElementById('nameFilterInput').value.toUpperCase();
+  var categoryFilterValue = document.getElementById('categoryFilterInput').value.toUpperCase();
+  var convictionYearFilterValue = document.getElementById('convictionYearFilterInput').value.toUpperCase();
+  var cards = document.querySelectorAll('.card');
+
+  cards.forEach(function(card) {
+    var name = card.querySelector('.image-header').innerText.toUpperCase();
+    var category = card.getAttribute('data-category').toUpperCase();
+    var subCategory = card.getAttribute('data-subcategory').toUpperCase();
+
+    if ((name.indexOf(nameFilterValue) > -1 || nameFilterValue === '') &&
+        ((category.indexOf(categoryFilterValue) > -1 || subCategory.indexOf(categoryFilterValue) > -1) || categoryFilterValue === '') &&
+        (convictionYearFilterValue === '')) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+document.getElementById('nameFilterInput').addEventListener('input', filterCriminals);
+document.getElementById('categoryFilterInput').addEventListener('input', filterCriminals);
+document.getElementById('convictionYearFilterInput').addEventListener('input', filterCriminals);
+</script>
+
+</body>
+</html>
