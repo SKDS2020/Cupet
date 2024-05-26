@@ -1,0 +1,76 @@
+@import url(https://dl.dropboxusercontent.com/u/15746367/fonts/carmela/style.css);
+@import url(https://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
+body {
+  font-family: "Alef Hebrew", sans-serif;
+  background-color: #1c3943;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+header {
+  font-family: 'verdana', sans-serif;
+  background-color: #477479;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+h1 {
+  font-family: "Alef Hebrew", sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;  font-size: 50px;
+}
+h2 {
+  font-family: 'Open Sans Hebrew Condensed', serif;
+  font-size: 48px;
+}
+p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+}
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: #0056b3;
+}
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.gallery img {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 0 10px 10px;
+}

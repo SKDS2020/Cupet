@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Change this to a secret key for session security
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
 
@@ -32,10 +31,10 @@ class Pet(db.Model):
 
 
 
-@app.route("/category")
-def category():
+@app.route("/category/<string:user_name>")
+def category(user_name):
     c_pets=Pet.query.all()
-    return render_template("category.html", pets=c_pets)
+    return render_template("category.html", user_name=user_name,  pets=c_pets)
 
 @app.route("/")
 def hi():
@@ -44,7 +43,7 @@ def hi():
 @app.route("/pet/<int:pet_id>")
 def pet(pet_id):
     pets=Pet.query.all()
-    return render_template("criminal.html", selected_pet=pets[pet_id])
+    return render_template("pet.html", selected_pet=pets[pet_id])
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -56,7 +55,7 @@ def signup():
         user = User(username=username, email=email, password_hash=hashed_password)
         db.session.add(user)
         db.session.commit()
-        return redirect('/category')
+        return redirect("/category/"+username)
     return render_template('signup.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
@@ -85,4 +84,3 @@ if __name__ == '__main__':
         df2.to_sql(name='user', con=db.engine, if_exists='replace')
 
     app.run(host="0.0.0.0", port=5001, debug=True)
-

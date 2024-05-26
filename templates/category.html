@@ -12,8 +12,9 @@
 <body>
 
 <header>
-  <img src="https://styles.redditmedia.com/t5_2rw7o/styles/communityIcon_zv0gx34lt5f11.png" alt="Top Image" style="width:3%; height:auto;">
-  <h1>Choose Your WeaPet</h1>
+  <img src="https://devops-prj-s3.s3.us-west-2.amazonaws.com/communityIcon_zv0gx34lt5f11.png" alt="Top Image" style="width:5%; height:auto;">
+<!--  <img src="https://styles.redditmedia.com/t5_2rw7o/styles/communityIcon_zv0gx34lt5f11.png" alt="Top Image" style="width:5%; height:auto;">-->
+  <h1>Hello {{user_name}} ! Choose Your WeaPet</h1>
 </header>
 
 <!--<header>-->
@@ -32,7 +33,7 @@
     <input type="text" class="filter-input" id="convictionYearFilterInput" placeholder="סנן לפי שנת הרשעה...">
   </div>
 
-  <!-- Container for criminal cards -->
+  <!-- Container for pet cards -->
   <div class="w3-row-padding" id="portfolio">
     {% for pet in pets %}
       {% if pet.name is not none %}
@@ -54,7 +55,7 @@
 
 <!-- JavaScript for filtering -->
 <script>
-function filterCriminals() {
+function filterPets() {
   var nameFilterValue = document.getElementById('nameFilterInput').value.toUpperCase();
   var categoryFilterValue = document.getElementById('categoryFilterInput').value.toUpperCase();
   var convictionYearFilterValue = document.getElementById('convictionYearFilterInput').value.toUpperCase();
@@ -75,9 +76,9 @@ function filterCriminals() {
   });
 }
 
-document.getElementById('nameFilterInput').addEventListener('input', filterCriminals);
-document.getElementById('categoryFilterInput').addEventListener('input', filterCriminals);
-document.getElementById('convictionYearFilterInput').addEventListener('input', filterCriminals);
+document.getElementById('nameFilterInput').addEventListener('input', filterPets);
+document.getElementById('categoryFilterInput').addEventListener('input', filterPets);
+document.getElementById('convictionYearFilterInput').addEventListener('input', filterPets);
 </script>
 
 </body>
